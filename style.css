@@ -2,6 +2,7 @@
   --n-cyan: #00f2ff;
   --n-purple: #bc00ff;
   --n-pink: #ff0077;
+  --cell: 28px; /* tamaño fijo de cada celda para PC */
 }
 
 /* Fondo general */
@@ -27,10 +28,9 @@ body {
 /* Layout general */
 .game-layout {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 2rem;
   width: 100%;
   max-width: 1200px;
   padding: 1rem;
@@ -73,8 +73,7 @@ body {
 
 /* Caja Game Over */
 .game-over-box {
-  width: 90%;
-  max-width: 380px;
+  width: 380px;
   padding: 30px;
   background: #0a0a0f;
   border: 3px solid var(--n-pink);
@@ -94,9 +93,7 @@ body {
   background: rgba(10, 10, 20, 0.95); 
   border: 1px solid #444; 
   border-radius: 12px;
-  flex: 1;
-  min-width: 140px;
-  max-width: 200px;
+  width: 200px;
 }
 
 .label-tech { 
@@ -125,15 +122,14 @@ body {
 
 .game-board { 
   display: grid; 
-  grid-template-columns: repeat(10, 1fr); 
-  grid-template-rows: repeat(20, 1fr); 
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 10 / 20;
-  margin: auto;
+  grid-template-columns: repeat(10, var(--cell)); 
+  grid-template-rows: repeat(20, var(--cell)); 
+  gap: 1px; 
 }
 
 .cell { 
+  width: var(--cell); 
+  height: var(--cell); 
   background: #0a0a0a; 
   border: 1px solid #111;
 }
@@ -179,21 +175,13 @@ body {
 
 .next-grid { 
   display: grid; 
-  grid-template-columns: repeat(4, 1fr); 
-  grid-template-rows: repeat(4, 1fr); 
-  width: 88px;
-  height: 88px;
+  grid-template-columns: repeat(4, 22px); 
+  grid-template-rows: repeat(4, 22px); 
   gap: 1px; 
 }
 
 .n-cell { 
+  width: 22px; 
+  height: 22px; 
   background: rgba(255,255,255,0.02); 
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .game-layout { gap: 1rem; }
-  .main-frame { max-width: 260px; }
-  .side-panel.compact { min-width: 120px; }
-  .value-tech { font-size: 1.5rem; }
 }
